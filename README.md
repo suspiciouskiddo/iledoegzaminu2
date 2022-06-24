@@ -1,2 +1,2 @@
 # iledoegzaminu2
-yes.
+yes..
