@@ -15,4 +15,8 @@
 </main>
 
 <style>
+	main {
+		position: absolute;
+		width: 80rem;
+	}
 </style>

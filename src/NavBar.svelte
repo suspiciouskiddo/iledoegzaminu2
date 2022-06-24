@@ -14,7 +14,7 @@
         background: #9a09b8;
         right: 0;
         top: 0;
-        width: 5%;
+        width: 3.5rem;
         height: 100%;
     }
     .navicon {

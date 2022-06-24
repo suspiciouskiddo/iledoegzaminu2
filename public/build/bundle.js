@@ -463,9 +463,9 @@ var app = (function () {
     			add_location(path, file$1, 6, 250, 290);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "0 0 384 512");
-    			attr_dev(svg, "class", "navicon svelte-c5690d");
+    			attr_dev(svg, "class", "navicon svelte-e6pnnf");
     			add_location(svg, file$1, 6, 4, 44);
-    			attr_dev(div, "class", "nav svelte-c5690d");
+    			attr_dev(div, "class", "nav svelte-e6pnnf");
     			add_location(div, file$1, 5, 0, 22);
     		},
     		l: function claim(nodes) {
@@ -569,6 +569,7 @@ var app = (function () {
     			create_component(loremmanysizes5.$$.fragment);
     			t6 = space();
     			create_component(loremmanysizes6.$$.fragment);
+    			attr_dev(main, "class", "svelte-1img5e0");
     			add_location(main, file, 5, 0, 114);
     		},
     		l: function claim(nodes) {
