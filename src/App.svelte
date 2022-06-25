@@ -1,22 +1,40 @@
 <script>
-	import LoremManySizes from "./LoremManySizes.svelte";
-	import NavBar from "./NavBar.svelte";
 </script>
 
 <main>
-	<NavBar/>
-	<LoremManySizes/>
-	<LoremManySizes/>
-	<LoremManySizes/>
-	<LoremManySizes/>
-	<LoremManySizes/>
-	<LoremManySizes/>
-	<LoremManySizes/>
+	<div class="nav" />
 </main>
 
 <style>
-	main {
-		position: absolute;
-		width: 80rem;
+	@keyframes animation-right-to-left {
+		from {
+			width: 80px;
+		}
+		to {
+			width: 160px;
+		}
+	}
+	.nav {
+		position: fixed;
+		background: rgb(153, 149, 149);
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 80px;
+	}
+	@media screen and (min-width: 700px) {
+		.nav {
+			position: fixed;
+			background: rgb(153, 149, 149);
+			top: 0;
+			right: 0;
+			width: 80px;
+			height: 100%;
+		}
+		.nav:hover {
+		    transition: 1s ease-in-out;
+			transform: translate(-3em,0);
+
+		}
 	}
 </style>
