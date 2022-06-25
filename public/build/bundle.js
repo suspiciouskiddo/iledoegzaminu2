@@ -344,8 +344,7 @@ var app = (function () {
     const file = "src/App.svelte";
 
     function create_fragment(ctx) {
-    	let main;
-    	let div3;
+    	let div6;
     	let ul;
     	let li0;
     	let a0;
@@ -354,18 +353,31 @@ var app = (function () {
     	let path0;
     	let t0;
     	let div0;
-    	let span;
+    	let span0;
     	let t2;
     	let li1;
     	let a1;
-    	let div2;
+    	let div3;
     	let svg1;
     	let path1;
+    	let t3;
+    	let div2;
+    	let span1;
+    	let t5;
+    	let li2;
+    	let a2;
+    	let div5;
+    	let svg2;
+    	let path2;
+    	let t6;
+    	let div4;
+    	let span2;
+    	let t8;
+    	let main;
 
     	const block = {
     		c: function create() {
-    			main = element("main");
-    			div3 = element("div");
+    			div6 = element("div");
     			ul = element("ul");
     			li0 = element("li");
     			a0 = element("a");
@@ -374,53 +386,85 @@ var app = (function () {
     			path0 = svg_element("path");
     			t0 = space();
     			div0 = element("div");
-    			span = element("span");
-    			span.textContent = "ILEDOEGZAMINU.PL";
+    			span0 = element("span");
+    			span0.textContent = "ILEDOEGZAMINU.PL";
     			t2 = space();
     			li1 = element("li");
     			a1 = element("a");
-    			div2 = element("div");
+    			div3 = element("div");
     			svg1 = svg_element("svg");
     			path1 = svg_element("path");
+    			t3 = space();
+    			div2 = element("div");
+    			span1 = element("span");
+    			span1.textContent = "MATURA";
+    			t5 = space();
+    			li2 = element("li");
+    			a2 = element("a");
+    			div5 = element("div");
+    			svg2 = svg_element("svg");
+    			path2 = svg_element("path");
+    			t6 = space();
+    			div4 = element("div");
+    			span2 = element("span");
+    			span2.textContent = "EGZAMIN ÓSMOKLASISTY";
+    			t8 = space();
+    			main = element("main");
     			attr_dev(path0, "d", "M352 0C369.7 0 384 14.33 384 32C384 49.67 369.7 64 352 64V74.98C352 117.4 335.1 158.1 305.1 188.1L237.3 256L305.1 323.9C335.1 353.9 352 394.6 352 437V448C369.7 448 384 462.3 384 480C384 497.7 369.7 512 352 512H32C14.33 512 0 497.7 0 480C0 462.3 14.33 448 32 448V437C32 394.6 48.86 353.9 78.86 323.9L146.7 256L78.86 188.1C48.86 158.1 32 117.4 32 74.98V64C14.33 64 0 49.67 0 32C0 14.33 14.33 0 32 0H352zM111.1 128H272C282.4 112.4 288 93.98 288 74.98V64H96V74.98C96 93.98 101.6 112.4 111.1 128zM111.1 384H272C268.5 378.7 264.5 373.7 259.9 369.1L192 301.3L124.1 369.1C119.5 373.7 115.5 378.7 111.1 384V384z");
-    			add_location(path0, file, 13, 176, 405);
+    			add_location(path0, file, 13, 176, 399);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 384 512");
     			attr_dev(svg0, "class", "svg-li-icon svelte-1eqhho0");
-    			add_location(svg0, file, 9, 6, 126);
-    			add_location(span, file, 18, 7, 1085);
+    			add_location(svg0, file, 9, 6, 120);
+    			add_location(span0, file, 18, 7, 1079);
     			attr_dev(div0, "class", "nav-text svelte-1eqhho0");
-    			add_location(div0, file, 17, 6, 1055);
-    			add_location(div1, file, 8, 5, 114);
+    			add_location(div0, file, 17, 6, 1049);
+    			add_location(div1, file, 8, 5, 108);
     			attr_dev(a0, "href", "/");
     			set_style(a0, "text-decoration", "none");
-    			add_location(a0, file, 7, 4, 65);
+    			add_location(a0, file, 7, 4, 59);
     			attr_dev(li0, "class", "svelte-1eqhho0");
-    			add_location(li0, file, 6, 3, 56);
+    			add_location(li0, file, 6, 3, 50);
     			attr_dev(path1, "d", "M0 219.2v212.5c0 14.25 11.62 26.25 26.5 27C75.32 461.2 180.2 471.3 240 511.9V245.2C181.4 205.5 79.99 194.8 29.84 192C13.59 191.1 0 203.6 0 219.2zM482.2 192c-50.09 2.848-151.3 13.47-209.1 53.09C272.1 245.2 272 245.3 272 245.5v266.5c60.04-40.39 164.7-50.76 213.5-53.28C500.4 457.9 512 445.9 512 431.7V219.2C512 203.6 498.4 191.1 482.2 192zM352 96c0-53-43-96-96-96S160 43 160 96s43 96 96 96S352 149 352 96z");
-    			add_location(path1, file, 30, 176, 1479);
+    			add_location(path1, file, 30, 176, 1473);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 512 512");
     			attr_dev(svg1, "class", "svg-li-icon svelte-1eqhho0");
-    			add_location(svg1, file, 26, 6, 1200);
-    			add_location(div2, file, 25, 5, 1188);
+    			add_location(svg1, file, 26, 6, 1194);
+    			add_location(span1, file, 35, 7, 1954);
+    			attr_dev(div2, "class", "nav-text svelte-1eqhho0");
+    			add_location(div2, file, 34, 6, 1924);
+    			add_location(div3, file, 25, 5, 1182);
     			attr_dev(a1, "href", "/");
-    			add_location(a1, file, 24, 4, 1170);
+    			add_location(a1, file, 24, 4, 1164);
     			attr_dev(li1, "class", "svelte-1eqhho0");
-    			add_location(li1, file, 23, 3, 1161);
+    			add_location(li1, file, 23, 3, 1155);
+    			attr_dev(path2, "d", "M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z");
+    			add_location(path2, file, 43, 255, 2307);
+    			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
+    			attr_dev(svg2, "viewBox", "0 0 448 512");
+    			attr_dev(svg2, "class", "svg-li-icon svelte-1eqhho0");
+    			add_location(svg2, file, 43, 5, 2057);
+    			add_location(span2, file, 45, 5, 2878);
+    			attr_dev(div4, "class", "nav-text svelte-1eqhho0");
+    			add_location(div4, file, 44, 4, 2850);
+    			add_location(div5, file, 42, 4, 2046);
+    			attr_dev(a2, "href", "/");
+    			add_location(a2, file, 41, 4, 2029);
+    			attr_dev(li2, "class", "svelte-1eqhho0");
+    			add_location(li2, file, 40, 3, 2020);
     			attr_dev(ul, "class", "svelte-1eqhho0");
-    			add_location(ul, file, 5, 2, 48);
-    			attr_dev(div3, "class", "nav svelte-1eqhho0");
-    			add_location(div3, file, 4, 1, 28);
-    			add_location(main, file, 3, 0, 20);
+    			add_location(ul, file, 5, 2, 42);
+    			attr_dev(div6, "class", "nav svelte-1eqhho0");
+    			add_location(div6, file, 4, 1, 22);
+    			add_location(main, file, 51, 1, 2964);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, main, anchor);
-    			append_dev(main, div3);
-    			append_dev(div3, ul);
+    			insert_dev(target, div6, anchor);
+    			append_dev(div6, ul);
     			append_dev(ul, li0);
     			append_dev(li0, a0);
     			append_dev(a0, div1);
@@ -428,18 +472,34 @@ var app = (function () {
     			append_dev(svg0, path0);
     			append_dev(div1, t0);
     			append_dev(div1, div0);
-    			append_dev(div0, span);
+    			append_dev(div0, span0);
     			append_dev(ul, t2);
     			append_dev(ul, li1);
     			append_dev(li1, a1);
-    			append_dev(a1, div2);
-    			append_dev(div2, svg1);
+    			append_dev(a1, div3);
+    			append_dev(div3, svg1);
     			append_dev(svg1, path1);
+    			append_dev(div3, t3);
+    			append_dev(div3, div2);
+    			append_dev(div2, span1);
+    			append_dev(ul, t5);
+    			append_dev(ul, li2);
+    			append_dev(li2, a2);
+    			append_dev(a2, div5);
+    			append_dev(div5, svg2);
+    			append_dev(svg2, path2);
+    			append_dev(div5, t6);
+    			append_dev(div5, div4);
+    			append_dev(div4, span2);
+    			insert_dev(target, t8, anchor);
+    			insert_dev(target, main, anchor);
     		},
     		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div6);
+    			if (detaching) detach_dev(t8);
     			if (detaching) detach_dev(main);
     		}
     	};
