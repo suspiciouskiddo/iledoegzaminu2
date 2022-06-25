@@ -85,10 +85,10 @@
 			right: 0;
 			width: 300px;
 			height: 100%;
-			transform: translate(220px); /* uncomment after finishing navbar*/
+			/*transform: translate(220px);  uncomment after finishing navbar*/
 			transition: 0.6s ease-in-out;
 		}
-		.nav:hover {
+		.nav:hover { /* find how the guy from fireship did the aligning to bottom, and do it for all items except for the first one*/
 			transition: 0.8s ease-in-out;
 			transform: translate(0, 0);
 		}
