@@ -71,21 +71,18 @@
 <main />
 
 <style>
+	/* theese properties for all screen sizes*/
 	ul {
 		padding: 0;
 		margin: 0;
 	}
 	li {
 		list-style-type: none;
-	}
-	.nav {
-		position: fixed;
-		background: #999595;
-		bottom: 0;
-		right: 0;
-		width: 100%;
-		height: 80px;
-	}
+	}	
+/* end theese properties for all screen sizes*/
+/*add all shit for small screens (will be painful as fuck) */
+
+
 	@media screen and (min-width: 700px) {
 		.svg-li-icon {
 			width: 50px;
@@ -113,7 +110,7 @@
 		.nav-item-div { /*TODO later: fix aligning color changing div to text and icon (align text and icon relative to div) */
 			height: 100px;
 			background: #70a0e9;
-			transition: background 0.3s;
+			transition: background 0.5s;
 		}
 		.nav-item-div:hover {
 			background: #5b7db1;
