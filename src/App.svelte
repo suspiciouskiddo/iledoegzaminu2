@@ -1,31 +1,22 @@
-<script type="module">
-
-	// Import the functions you need from the SDKs you need
-	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-analytics.js";
-	import { getAuth } from "firebase/auth";
-	import { getFirestore } from "firebase/firestore";
-	// TODO: Add SDKs for Firebase products that you want to use
-	// https://firebase.google.com/docs/web/setup#available-libraries
-  
-	// Your web app's Firebase configuration
-	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	const firebaseConfig = {
-	  apiKey: "AIzaSyAwhcb99SZzUAM4GqKQtaIP1dBHxnZps9s",
-	  authDomain: "iledoegzaminupl.firebaseapp.com",
-	  projectId: "iledoegzaminupl",
-	  storageBucket: "iledoegzaminupl.appspot.com",
-	  messagingSenderId: "2585227995",
-	  appId: "1:2585227995:web:afb9dab5dc047bdebd52fe",
-	  measurementId: "G-R2SHECRF3S"
-	};
-  
-	// Initialize Firebase
-	const app = initializeApp(firebaseConfig);
-	const analytics = getAnalytics(app);
-  
+<script>
+import Counter from "./Counter.svelte";
 </script>
-
+<main>
+	<div class="counter-holder" id="counter-holder">
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
+	</div>
+</main>
 <div class="nav">
 	<ul>
 		<li>
@@ -101,10 +92,20 @@
 		</li>
 	</ul>
 </div>
-<main />
+
 
 <style>
 	/* theese properties for all screen sizes*/
+	:root {
+		overflow-x: hidden;
+	}
+	.counter-holder {
+		position: absolute;
+			top: 0;
+			left: 0;
+			padding: 30px;
+			display: grid;
+	}
 	ul {
 		padding: 0;
 		margin: 0;
@@ -139,9 +140,21 @@
 		.nav-item-div:hover {
 			background: #5b7db1;
 		}
+		.counter-holder {
+			width: 100%;
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+		}
 	}
 
+
 	@media screen and (min-width: 700px) {
+		.counter-holder {
+			width: calc(100% - 80px);
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+		}
 		.svg-li-icon {
 			width: 50px;
 			padding: 15px;
@@ -173,6 +186,12 @@
 		}
 		.nav-item-div:hover {
 			background: #5b7db1;
+		}
+	}
+	@media screen and (min-width: 1200px) {
+		.counter-holder {
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-rows: 1fr 1fr 1fr 1fr;
 		}
 	}
 </style>
