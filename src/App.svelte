@@ -59,12 +59,20 @@
 		</li>
 		<li>
 			<a href="/">
-			<div class="nav-item-div">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-li-icon"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M115.4 136.8l102.1 37.35c35.13-81.62 86.25-144.4 139-173.7c-95.88-4.875-188.8 36.96-248.5 111.7C101.2 120.6 105.2 133.2 115.4 136.8zM247.6 185l238.5 86.87c35.75-121.4 18.62-231.6-42.63-253.9c-7.375-2.625-15.12-4.062-23.12-4.062C362.4 13.88 292.1 83.13 247.6 185zM521.5 60.51c6.25 16.25 10.75 34.62 13.13 55.25c5.75 49.87-1.376 108.1-18.88 166.9l102.6 37.37c10.13 3.75 21.25-3.375 21.5-14.12C642.3 210.1 598 118.4 521.5 60.51zM528 448h-207l65-178.5l-60.13-21.87l-72.88 200.4H48C21.49 448 0 469.5 0 496C0 504.8 7.163 512 16 512h544c8.837 0 16-7.163 16-15.1C576 469.5 554.5 448 528 448z"/></svg>
-				<div class="nav-text">
-					<span>WAKACJE 2023</span>
-				</div>
-			</div></a>
+				<div class="nav-item-div">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 640 512"
+						class="svg-li-icon"
+						><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path
+							d="M115.4 136.8l102.1 37.35c35.13-81.62 86.25-144.4 139-173.7c-95.88-4.875-188.8 36.96-248.5 111.7C101.2 120.6 105.2 133.2 115.4 136.8zM247.6 185l238.5 86.87c35.75-121.4 18.62-231.6-42.63-253.9c-7.375-2.625-15.12-4.062-23.12-4.062C362.4 13.88 292.1 83.13 247.6 185zM521.5 60.51c6.25 16.25 10.75 34.62 13.13 55.25c5.75 49.87-1.376 108.1-18.88 166.9l102.6 37.37c10.13 3.75 21.25-3.375 21.5-14.12C642.3 210.1 598 118.4 521.5 60.51zM528 448h-207l65-178.5l-60.13-21.87l-72.88 200.4H48C21.49 448 0 469.5 0 496C0 504.8 7.163 512 16 512h544c8.837 0 16-7.163 16-15.1C576 469.5 554.5 448 528 448z"
+						/></svg
+					>
+					<div class="nav-text">
+						<span>WAKACJE 2023</span>
+					</div>
+				</div></a
+			>
 		</li>
 	</ul>
 </div>
@@ -78,10 +86,36 @@
 	}
 	li {
 		list-style-type: none;
-	}	
-/* end theese properties for all screen sizes*/
-/*add all shit for small screens (will be painful as fuck) */
-
+	}
+	/* end theese properties for all screen sizes*/
+	/*add all shit for small screens (will be painful as fuck) */
+	@media screen and (max-width: 700px) {
+		li {
+			display: inline-block;
+		}
+		.nav {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 80px;
+			background: #70a0e9;
+		}
+		.svg-li-icon {
+			height: 50px;
+			padding: 15px;
+		}
+		.nav-text {
+			display: none;
+		}
+		.nav-item-div {
+			background: #70a0e9;
+			transition: background 0.5s;
+		}
+		.nav-item-div:hover {
+			background: #5b7db1;
+		}
+	}
 
 	@media screen and (min-width: 700px) {
 		.svg-li-icon {
@@ -100,14 +134,15 @@
 			right: 0;
 			width: 300px;
 			height: 100%;
-			transform: translate(220px); 
+			transform: translate(220px);
 			transition: 0.6s ease-in-out;
 		}
 		.nav:hover {
 			transition: 0.8s ease-in-out;
 			transform: translate(0, 0);
 		}
-		.nav-item-div { /*TODO later: fix aligning color changing div to text and icon (align text and icon relative to div) */
+		.nav-item-div {
+			/*TODO later: fix aligning color changing div to text and icon (align text and icon relative to div) */
 			height: 100px;
 			background: #70a0e9;
 			transition: background 0.5s;
