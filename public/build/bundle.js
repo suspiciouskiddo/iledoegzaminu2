@@ -158,11 +158,31 @@ var app = (function () {
         }
     }
     const outroing = new Set();
+    let outros;
     function transition_in(block, local) {
         if (block && block.i) {
             outroing.delete(block);
             block.i(local);
         }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+    function create_component(block) {
+        block && block.c();
     }
     function mount_component(component, target, anchor, customElement) {
         const { fragment, on_mount, on_destroy, after_update } = component.$$;
@@ -345,17 +365,23 @@ var app = (function () {
 
     function create_fragment$1(ctx) {
     	let div;
+    	let p;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$1, 4, 0, 40);
+    			p = element("p");
+    			p.textContent = "Chuj";
+    			add_location(p, file$1, 5, 0, 68);
+    			attr_dev(div, "class", "maindiv svelte-ykm9ww");
+    			add_location(div, file$1, 4, 0, 46);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
+    			append_dev(div, p);
     		},
     		p: noop,
     		i: noop,
@@ -376,37 +402,22 @@ var app = (function () {
     	return block;
     }
 
-    function instance$1($$self, $$props, $$invalidate) {
+    function instance$1($$self, $$props) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Counter', slots, []);
-    	let { dataobj } = $$props;
-    	const writable_props = ['dataobj'];
+    	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Counter> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$$set = $$props => {
-    		if ('dataobj' in $$props) $$invalidate(0, dataobj = $$props.dataobj);
-    	};
-
-    	$$self.$capture_state = () => ({ dataobj });
-
-    	$$self.$inject_state = $$props => {
-    		if ('dataobj' in $$props) $$invalidate(0, dataobj = $$props.dataobj);
-    	};
-
-    	if ($$props && "$$inject" in $$props) {
-    		$$self.$inject_state($$props.$$inject);
-    	}
-
-    	return [dataobj];
+    	return [];
     }
 
     class Counter extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, { dataobj: 0 });
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -414,21 +425,6 @@ var app = (function () {
     			options,
     			id: create_fragment$1.name
     		});
-
-    		const { ctx } = this.$$;
-    		const props = options.props || {};
-
-    		if (/*dataobj*/ ctx[0] === undefined && !('dataobj' in props)) {
-    			console.warn("<Counter> was created without expected prop 'dataobj'");
-    		}
-    	}
-
-    	get dataobj() {
-    		throw new Error("<Counter>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set dataobj(value) {
-    		throw new Error("<Counter>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -437,356 +433,321 @@ var app = (function () {
 
     function create_fragment(ctx) {
     	let main;
-    	let div12;
     	let div0;
+    	let counter0;
     	let t0;
-    	let div1;
+    	let counter1;
     	let t1;
-    	let div2;
+    	let counter2;
     	let t2;
-    	let div3;
+    	let counter3;
     	let t3;
-    	let div4;
+    	let counter4;
     	let t4;
-    	let div5;
+    	let counter5;
     	let t5;
-    	let div6;
+    	let counter6;
     	let t6;
-    	let div7;
+    	let counter7;
     	let t7;
-    	let div8;
+    	let counter8;
     	let t8;
-    	let div9;
-    	let t9;
     	let div10;
-    	let t10;
-    	let div11;
-    	let t11;
-    	let div22;
     	let ul;
     	let li0;
     	let a0;
-    	let div14;
+    	let div2;
     	let svg0;
     	let path0;
-    	let t12;
-    	let div13;
+    	let t9;
+    	let div1;
     	let span0;
-    	let t14;
+    	let t11;
     	let li1;
-    	let div15;
-    	let t15;
+    	let div3;
+    	let t12;
     	let li2;
     	let a1;
-    	let div17;
+    	let div5;
     	let svg1;
     	let path1;
-    	let t16;
-    	let div16;
+    	let t13;
+    	let div4;
     	let span1;
-    	let t18;
+    	let t15;
     	let li3;
     	let a2;
-    	let div19;
+    	let div7;
     	let svg2;
     	let path2;
-    	let t19;
-    	let div18;
+    	let t16;
+    	let div6;
     	let span2;
-    	let t21;
+    	let t18;
     	let li4;
     	let a3;
-    	let div21;
+    	let div9;
     	let svg3;
     	let path3;
-    	let t22;
-    	let div20;
+    	let t19;
+    	let div8;
     	let span3;
+    	let current;
+    	counter0 = new Counter({ $$inline: true });
+    	counter1 = new Counter({ $$inline: true });
+    	counter2 = new Counter({ $$inline: true });
+    	counter3 = new Counter({ $$inline: true });
+    	counter4 = new Counter({ $$inline: true });
+    	counter5 = new Counter({ $$inline: true });
+    	counter6 = new Counter({ $$inline: true });
+    	counter7 = new Counter({ $$inline: true });
+    	counter8 = new Counter({ $$inline: true });
 
     	const block = {
     		c: function create() {
     			main = element("main");
-    			div12 = element("div");
     			div0 = element("div");
+    			create_component(counter0.$$.fragment);
     			t0 = space();
-    			div1 = element("div");
+    			create_component(counter1.$$.fragment);
     			t1 = space();
-    			div2 = element("div");
+    			create_component(counter2.$$.fragment);
     			t2 = space();
-    			div3 = element("div");
+    			create_component(counter3.$$.fragment);
     			t3 = space();
-    			div4 = element("div");
+    			create_component(counter4.$$.fragment);
     			t4 = space();
-    			div5 = element("div");
+    			create_component(counter5.$$.fragment);
     			t5 = space();
-    			div6 = element("div");
+    			create_component(counter6.$$.fragment);
     			t6 = space();
-    			div7 = element("div");
+    			create_component(counter7.$$.fragment);
     			t7 = space();
-    			div8 = element("div");
+    			create_component(counter8.$$.fragment);
     			t8 = space();
-    			div9 = element("div");
-    			t9 = space();
     			div10 = element("div");
-    			t10 = space();
-    			div11 = element("div");
-    			t11 = space();
-    			div22 = element("div");
     			ul = element("ul");
     			li0 = element("li");
     			a0 = element("a");
-    			div14 = element("div");
+    			div2 = element("div");
     			svg0 = svg_element("svg");
     			path0 = svg_element("path");
-    			t12 = space();
-    			div13 = element("div");
+    			t9 = space();
+    			div1 = element("div");
     			span0 = element("span");
     			span0.textContent = "ILEDOEGZAMINU.PL";
-    			t14 = space();
+    			t11 = space();
     			li1 = element("li");
-    			div15 = element("div");
-    			t15 = space();
+    			div3 = element("div");
+    			t12 = space();
     			li2 = element("li");
     			a1 = element("a");
-    			div17 = element("div");
+    			div5 = element("div");
     			svg1 = svg_element("svg");
     			path1 = svg_element("path");
-    			t16 = space();
-    			div16 = element("div");
+    			t13 = space();
+    			div4 = element("div");
     			span1 = element("span");
     			span1.textContent = "MATURA";
-    			t18 = space();
+    			t15 = space();
     			li3 = element("li");
     			a2 = element("a");
-    			div19 = element("div");
+    			div7 = element("div");
     			svg2 = svg_element("svg");
     			path2 = svg_element("path");
-    			t19 = space();
-    			div18 = element("div");
+    			t16 = space();
+    			div6 = element("div");
     			span2 = element("span");
     			span2.textContent = "EGZAMIN ÓSMOKLASISTY";
-    			t21 = space();
+    			t18 = space();
     			li4 = element("li");
     			a3 = element("a");
-    			div21 = element("div");
+    			div9 = element("div");
     			svg3 = svg_element("svg");
     			path3 = svg_element("path");
-    			t22 = space();
-    			div20 = element("div");
+    			t19 = space();
+    			div8 = element("div");
     			span3 = element("span");
     			span3.textContent = "WAKACJE 2023";
-    			set_style(div0, "height", "300px");
-    			set_style(div0, "width", "325px");
-    			set_style(div0, "background", "white");
-    			set_style(div0, "margin", "10px");
-    			add_location(div0, file, 5, 2, 118);
-    			set_style(div1, "height", "300px");
-    			set_style(div1, "width", "325px");
-    			set_style(div1, "background", "white");
-    			set_style(div1, "margin", "10px");
-    			add_location(div1, file, 6, 2, 202);
-    			set_style(div2, "height", "300px");
-    			set_style(div2, "width", "325px");
-    			set_style(div2, "background", "white");
-    			set_style(div2, "margin", "10px");
-    			add_location(div2, file, 7, 2, 286);
-    			set_style(div3, "height", "300px");
-    			set_style(div3, "width", "325px");
-    			set_style(div3, "background", "white");
-    			set_style(div3, "margin", "10px");
-    			add_location(div3, file, 8, 2, 370);
-    			set_style(div4, "height", "300px");
-    			set_style(div4, "width", "325px");
-    			set_style(div4, "background", "white");
-    			set_style(div4, "margin", "10px");
-    			add_location(div4, file, 9, 2, 454);
-    			set_style(div5, "height", "300px");
-    			set_style(div5, "width", "325px");
-    			set_style(div5, "background", "white");
-    			set_style(div5, "margin", "10px");
-    			add_location(div5, file, 10, 2, 538);
-    			set_style(div6, "height", "300px");
-    			set_style(div6, "width", "325px");
-    			set_style(div6, "background", "white");
-    			set_style(div6, "margin", "10px");
-    			add_location(div6, file, 11, 2, 622);
-    			set_style(div7, "height", "300px");
-    			set_style(div7, "width", "325px");
-    			set_style(div7, "background", "white");
-    			set_style(div7, "margin", "10px");
-    			add_location(div7, file, 12, 2, 706);
-    			set_style(div8, "height", "300px");
-    			set_style(div8, "width", "325px");
-    			set_style(div8, "background", "white");
-    			set_style(div8, "margin", "10px");
-    			add_location(div8, file, 13, 2, 790);
-    			set_style(div9, "height", "300px");
-    			set_style(div9, "width", "325px");
-    			set_style(div9, "background", "white");
-    			set_style(div9, "margin", "10px");
-    			add_location(div9, file, 14, 2, 874);
-    			set_style(div10, "height", "300px");
-    			set_style(div10, "width", "325px");
-    			set_style(div10, "background", "white");
-    			set_style(div10, "margin", "10px");
-    			add_location(div10, file, 15, 2, 958);
-    			set_style(div11, "height", "300px");
-    			set_style(div11, "width", "325px");
-    			set_style(div11, "background", "white");
-    			set_style(div11, "margin", "10px");
-    			add_location(div11, file, 16, 2, 1042);
-    			attr_dev(div12, "class", "counter-holder svelte-b9lzje");
-    			attr_dev(div12, "id", "counter-holder");
-    			add_location(div12, file, 4, 1, 67);
+    			attr_dev(div0, "class", "counter-holder svelte-b9lzje");
+    			attr_dev(div0, "id", "counter-holder");
+    			add_location(div0, file, 4, 1, 67);
     			add_location(main, file, 3, 0, 59);
     			attr_dev(path0, "d", "M352 0C369.7 0 384 14.33 384 32C384 49.67 369.7 64 352 64V74.98C352 117.4 335.1 158.1 305.1 188.1L237.3 256L305.1 323.9C335.1 353.9 352 394.6 352 437V448C369.7 448 384 462.3 384 480C384 497.7 369.7 512 352 512H32C14.33 512 0 497.7 0 480C0 462.3 14.33 448 32 448V437C32 394.6 48.86 353.9 78.86 323.9L146.7 256L78.86 188.1C48.86 158.1 32 117.4 32 74.98V64C14.33 64 0 49.67 0 32C0 14.33 14.33 0 32 0H352zM111.1 128H272C282.4 112.4 288 93.98 288 74.98V64H96V74.98C96 93.98 101.6 112.4 111.1 128zM111.1 384H272C268.5 378.7 264.5 373.7 259.9 369.1L192 301.3L124.1 369.1C119.5 373.7 115.5 378.7 111.1 384V384z");
-    			add_location(path0, file, 28, 175, 1529);
+    			add_location(path0, file, 38, 175, 1667);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 384 512");
     			attr_dev(svg0, "class", "svg-li-icon svelte-b9lzje");
-    			add_location(svg0, file, 24, 5, 1254);
-    			add_location(span0, file, 33, 6, 2204);
-    			attr_dev(div13, "class", "nav-text svelte-b9lzje");
-    			add_location(div13, file, 32, 5, 2175);
-    			attr_dev(div14, "class", "nav-item-div svelte-b9lzje");
-    			add_location(div14, file, 23, 4, 1222);
+    			add_location(svg0, file, 34, 5, 1392);
+    			add_location(span0, file, 43, 6, 2342);
+    			attr_dev(div1, "class", "nav-text svelte-b9lzje");
+    			add_location(div1, file, 42, 5, 2313);
+    			attr_dev(div2, "class", "nav-item-div svelte-b9lzje");
+    			add_location(div2, file, 33, 4, 1360);
     			attr_dev(a0, "href", "/");
     			set_style(a0, "text-decoration", "none");
-    			add_location(a0, file, 22, 3, 1174);
+    			add_location(a0, file, 32, 3, 1312);
     			attr_dev(li0, "class", "svelte-b9lzje");
-    			add_location(li0, file, 21, 2, 1166);
-    			set_style(div15, "height", "50px");
-    			add_location(div15, file, 39, 3, 2283);
+    			add_location(li0, file, 31, 2, 1304);
+    			set_style(div3, "height", "50px");
+    			add_location(div3, file, 49, 3, 2421);
     			attr_dev(li1, "class", "svelte-b9lzje");
-    			add_location(li1, file, 38, 2, 2275);
+    			add_location(li1, file, 48, 2, 2413);
     			attr_dev(path1, "d", "M0 219.2v212.5c0 14.25 11.62 26.25 26.5 27C75.32 461.2 180.2 471.3 240 511.9V245.2C181.4 205.5 79.99 194.8 29.84 192C13.59 191.1 0 203.6 0 219.2zM482.2 192c-50.09 2.848-151.3 13.47-209.1 53.09C272.1 245.2 272 245.3 272 245.5v266.5c60.04-40.39 164.7-50.76 213.5-53.28C500.4 457.9 512 445.9 512 431.7V219.2C512 203.6 498.4 191.1 482.2 192zM352 96c0-53-43-96-96-96S160 43 160 96s43 96 96 96S352 149 352 96z");
-    			add_location(path1, file, 48, 175, 2655);
+    			add_location(path1, file, 58, 175, 2793);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 512 512");
     			attr_dev(svg1, "class", "svg-li-icon svelte-b9lzje");
-    			add_location(svg1, file, 44, 5, 2380);
-    			add_location(span1, file, 53, 6, 3131);
-    			attr_dev(div16, "class", "nav-text svelte-b9lzje");
-    			add_location(div16, file, 52, 5, 3102);
-    			attr_dev(div17, "class", "nav-item-div svelte-b9lzje");
-    			add_location(div17, file, 43, 4, 2348);
+    			add_location(svg1, file, 54, 5, 2518);
+    			add_location(span1, file, 63, 6, 3269);
+    			attr_dev(div4, "class", "nav-text svelte-b9lzje");
+    			add_location(div4, file, 62, 5, 3240);
+    			attr_dev(div5, "class", "nav-item-div svelte-b9lzje");
+    			add_location(div5, file, 53, 4, 2486);
     			attr_dev(a1, "href", "/");
-    			add_location(a1, file, 42, 3, 2331);
+    			add_location(a1, file, 52, 3, 2469);
     			attr_dev(li2, "class", "svelte-b9lzje");
-    			add_location(li2, file, 41, 2, 2323);
+    			add_location(li2, file, 51, 2, 2461);
     			attr_dev(path2, "d", "M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z");
-    			add_location(path2, file, 65, 175, 3524);
+    			add_location(path2, file, 75, 175, 3662);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 448 512");
     			attr_dev(svg2, "class", "svg-li-icon svelte-b9lzje");
-    			add_location(svg2, file, 61, 5, 3249);
-    			add_location(span2, file, 70, 6, 4117);
-    			attr_dev(div18, "class", "nav-text svelte-b9lzje");
-    			add_location(div18, file, 69, 5, 4088);
-    			attr_dev(div19, "class", "nav-item-div svelte-b9lzje");
-    			add_location(div19, file, 60, 4, 3217);
+    			add_location(svg2, file, 71, 5, 3387);
+    			add_location(span2, file, 80, 6, 4255);
+    			attr_dev(div6, "class", "nav-text svelte-b9lzje");
+    			add_location(div6, file, 79, 5, 4226);
+    			attr_dev(div7, "class", "nav-item-div svelte-b9lzje");
+    			add_location(div7, file, 70, 4, 3355);
     			attr_dev(a2, "href", "/");
-    			add_location(a2, file, 59, 3, 3200);
+    			add_location(a2, file, 69, 3, 3338);
     			attr_dev(li3, "class", "svelte-b9lzje");
-    			add_location(li3, file, 58, 2, 3192);
+    			add_location(li3, file, 68, 2, 3330);
     			attr_dev(path3, "d", "M115.4 136.8l102.1 37.35c35.13-81.62 86.25-144.4 139-173.7c-95.88-4.875-188.8 36.96-248.5 111.7C101.2 120.6 105.2 133.2 115.4 136.8zM247.6 185l238.5 86.87c35.75-121.4 18.62-231.6-42.63-253.9c-7.375-2.625-15.12-4.062-23.12-4.062C362.4 13.88 292.1 83.13 247.6 185zM521.5 60.51c6.25 16.25 10.75 34.62 13.13 55.25c5.75 49.87-1.376 108.1-18.88 166.9l102.6 37.37c10.13 3.75 21.25-3.375 21.5-14.12C642.3 210.1 598 118.4 521.5 60.51zM528 448h-207l65-178.5l-60.13-21.87l-72.88 200.4H48C21.49 448 0 469.5 0 496C0 504.8 7.163 512 16 512h544c8.837 0 16-7.163 16-15.1C576 469.5 554.5 448 528 448z");
-    			add_location(path3, file, 82, 175, 4524);
+    			add_location(path3, file, 92, 175, 4662);
     			attr_dev(svg3, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg3, "viewBox", "0 0 640 512");
     			attr_dev(svg3, "class", "svg-li-icon svelte-b9lzje");
-    			add_location(svg3, file, 78, 5, 4249);
-    			add_location(span3, file, 87, 6, 5180);
-    			attr_dev(div20, "class", "nav-text svelte-b9lzje");
-    			add_location(div20, file, 86, 5, 5151);
-    			attr_dev(div21, "class", "nav-item-div svelte-b9lzje");
-    			add_location(div21, file, 77, 4, 4217);
+    			add_location(svg3, file, 88, 5, 4387);
+    			add_location(span3, file, 97, 6, 5318);
+    			attr_dev(div8, "class", "nav-text svelte-b9lzje");
+    			add_location(div8, file, 96, 5, 5289);
+    			attr_dev(div9, "class", "nav-item-div svelte-b9lzje");
+    			add_location(div9, file, 87, 4, 4355);
     			attr_dev(a3, "href", "/");
-    			add_location(a3, file, 76, 3, 4200);
+    			add_location(a3, file, 86, 3, 4338);
     			attr_dev(li4, "class", "svelte-b9lzje");
-    			add_location(li4, file, 75, 2, 4192);
+    			add_location(li4, file, 85, 2, 4330);
     			attr_dev(ul, "class", "svelte-b9lzje");
-    			add_location(ul, file, 20, 1, 1159);
-    			attr_dev(div22, "class", "nav svelte-b9lzje");
-    			add_location(div22, file, 19, 0, 1140);
+    			add_location(ul, file, 30, 1, 1297);
+    			attr_dev(div10, "class", "nav svelte-b9lzje");
+    			add_location(div10, file, 29, 0, 1278);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, main, anchor);
-    			append_dev(main, div12);
-    			append_dev(div12, div0);
-    			append_dev(div12, t0);
-    			append_dev(div12, div1);
-    			append_dev(div12, t1);
-    			append_dev(div12, div2);
-    			append_dev(div12, t2);
-    			append_dev(div12, div3);
-    			append_dev(div12, t3);
-    			append_dev(div12, div4);
-    			append_dev(div12, t4);
-    			append_dev(div12, div5);
-    			append_dev(div12, t5);
-    			append_dev(div12, div6);
-    			append_dev(div12, t6);
-    			append_dev(div12, div7);
-    			append_dev(div12, t7);
-    			append_dev(div12, div8);
-    			append_dev(div12, t8);
-    			append_dev(div12, div9);
-    			append_dev(div12, t9);
-    			append_dev(div12, div10);
-    			append_dev(div12, t10);
-    			append_dev(div12, div11);
-    			insert_dev(target, t11, anchor);
-    			insert_dev(target, div22, anchor);
-    			append_dev(div22, ul);
+    			append_dev(main, div0);
+    			mount_component(counter0, div0, null);
+    			append_dev(div0, t0);
+    			mount_component(counter1, div0, null);
+    			append_dev(div0, t1);
+    			mount_component(counter2, div0, null);
+    			append_dev(div0, t2);
+    			mount_component(counter3, div0, null);
+    			append_dev(div0, t3);
+    			mount_component(counter4, div0, null);
+    			append_dev(div0, t4);
+    			mount_component(counter5, div0, null);
+    			append_dev(div0, t5);
+    			mount_component(counter6, div0, null);
+    			append_dev(div0, t6);
+    			mount_component(counter7, div0, null);
+    			append_dev(div0, t7);
+    			mount_component(counter8, div0, null);
+    			insert_dev(target, t8, anchor);
+    			insert_dev(target, div10, anchor);
+    			append_dev(div10, ul);
     			append_dev(ul, li0);
     			append_dev(li0, a0);
-    			append_dev(a0, div14);
-    			append_dev(div14, svg0);
+    			append_dev(a0, div2);
+    			append_dev(div2, svg0);
     			append_dev(svg0, path0);
-    			append_dev(div14, t12);
-    			append_dev(div14, div13);
-    			append_dev(div13, span0);
-    			append_dev(ul, t14);
+    			append_dev(div2, t9);
+    			append_dev(div2, div1);
+    			append_dev(div1, span0);
+    			append_dev(ul, t11);
     			append_dev(ul, li1);
-    			append_dev(li1, div15);
-    			append_dev(ul, t15);
+    			append_dev(li1, div3);
+    			append_dev(ul, t12);
     			append_dev(ul, li2);
     			append_dev(li2, a1);
-    			append_dev(a1, div17);
-    			append_dev(div17, svg1);
+    			append_dev(a1, div5);
+    			append_dev(div5, svg1);
     			append_dev(svg1, path1);
-    			append_dev(div17, t16);
-    			append_dev(div17, div16);
-    			append_dev(div16, span1);
-    			append_dev(ul, t18);
+    			append_dev(div5, t13);
+    			append_dev(div5, div4);
+    			append_dev(div4, span1);
+    			append_dev(ul, t15);
     			append_dev(ul, li3);
     			append_dev(li3, a2);
-    			append_dev(a2, div19);
-    			append_dev(div19, svg2);
+    			append_dev(a2, div7);
+    			append_dev(div7, svg2);
     			append_dev(svg2, path2);
-    			append_dev(div19, t19);
-    			append_dev(div19, div18);
-    			append_dev(div18, span2);
-    			append_dev(ul, t21);
+    			append_dev(div7, t16);
+    			append_dev(div7, div6);
+    			append_dev(div6, span2);
+    			append_dev(ul, t18);
     			append_dev(ul, li4);
     			append_dev(li4, a3);
-    			append_dev(a3, div21);
-    			append_dev(div21, svg3);
+    			append_dev(a3, div9);
+    			append_dev(div9, svg3);
     			append_dev(svg3, path3);
-    			append_dev(div21, t22);
-    			append_dev(div21, div20);
-    			append_dev(div20, span3);
+    			append_dev(div9, t19);
+    			append_dev(div9, div8);
+    			append_dev(div8, span3);
+    			current = true;
     		},
     		p: noop,
-    		i: noop,
-    		o: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(counter0.$$.fragment, local);
+    			transition_in(counter1.$$.fragment, local);
+    			transition_in(counter2.$$.fragment, local);
+    			transition_in(counter3.$$.fragment, local);
+    			transition_in(counter4.$$.fragment, local);
+    			transition_in(counter5.$$.fragment, local);
+    			transition_in(counter6.$$.fragment, local);
+    			transition_in(counter7.$$.fragment, local);
+    			transition_in(counter8.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(counter0.$$.fragment, local);
+    			transition_out(counter1.$$.fragment, local);
+    			transition_out(counter2.$$.fragment, local);
+    			transition_out(counter3.$$.fragment, local);
+    			transition_out(counter4.$$.fragment, local);
+    			transition_out(counter5.$$.fragment, local);
+    			transition_out(counter6.$$.fragment, local);
+    			transition_out(counter7.$$.fragment, local);
+    			transition_out(counter8.$$.fragment, local);
+    			current = false;
+    		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
-    			if (detaching) detach_dev(t11);
-    			if (detaching) detach_dev(div22);
+    			destroy_component(counter0);
+    			destroy_component(counter1);
+    			destroy_component(counter2);
+    			destroy_component(counter3);
+    			destroy_component(counter4);
+    			destroy_component(counter5);
+    			destroy_component(counter6);
+    			destroy_component(counter7);
+    			destroy_component(counter8);
+    			if (detaching) detach_dev(t8);
+    			if (detaching) detach_dev(div10);
     		}
     	};
 
