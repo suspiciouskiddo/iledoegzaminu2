@@ -1,30 +1,13 @@
 <script>
 import Counter from "./Counter.svelte";
+let dob = {
+	name: "chuj",
+	addr: "/"
+}
 </script>
 <main>
 	<div class="counter-holder" id="counter-holder">
-		<Counter />
-		<Counter />
-		<Counter />
-		<Counter />
-		<Counter />
-		<Counter />
-		<Counter />
-		<Counter />
-		<Counter />
-		
-		<!-- <div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div>
-		<div style="height: 300px; width: 325px; background: white; margin: 10px;"></div> -->
+		<Counter dataobj="{dob}"/>
 	</div>
 </main>
 <div class="nav">
