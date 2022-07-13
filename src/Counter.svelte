@@ -34,7 +34,6 @@
         width: 325px;
         background: rgb(56, 56, 56);
         margin: 10px;
-        color: white;
         text-align: center;
     }
 </style>
