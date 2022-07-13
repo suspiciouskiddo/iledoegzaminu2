@@ -2,7 +2,9 @@
 import Counter from "./Counter.svelte";
 let dob = {
 	name: "chuj",
-	addr: "/"
+	addr: "/",
+	date: new Date(2020, 1, 1, 10, 22, 35),
+	color: "blue"
 }
 </script>
 <main>

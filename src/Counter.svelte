@@ -11,7 +11,7 @@
             inminutes: Math.floor((diff / (1000 * 60)) * 100)/100,
             inseconds: Math.floor((diff / 1000) * 1)/1
         }
-        
+        return robj;
     }
 </script>
 
@@ -19,11 +19,16 @@
     <a href={dataobj.addr} style="text-decoration: none; color: white;">
         <h1>Odliczanie do {dataobj.name}</h1>
         <p style="font-size: 12px;">(kliknij w tekst aby zobaczyć więcej)</p>
-        <h2>test</h2>
+        <h2>Pozostało: </h2>
+        <h3>{remainingtime(dataobj.date).inmonths} miesięcy, inaczej</h3>
+        <h3>{remainingtime(dataobj.date).inweeks} tygodni, inaczej</h3>
+        <h3>{remainingtime(dataobj.date).indays} dni</h3>
+
     </a>
 </div>
 
 <style>
+    
     .maindiv {
         height: 300px;
         width: 325px;
