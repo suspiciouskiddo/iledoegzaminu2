@@ -396,16 +396,16 @@ var app = (function () {
     			t4 = space();
     			h2 = element("h2");
     			h2.textContent = "test";
-    			add_location(h1, file$1, 9, 8, 201);
+    			add_location(h1, file$1, 19, 8, 747);
     			set_style(p, "font-size", "12px");
-    			add_location(p, file$1, 10, 8, 247);
-    			add_location(h2, file$1, 11, 8, 325);
+    			add_location(p, file$1, 20, 8, 793);
+    			add_location(h2, file$1, 21, 8, 871);
     			attr_dev(a, "href", a_href_value = /*dataobj*/ ctx[0].addr);
     			set_style(a, "text-decoration", "none");
     			set_style(a, "color", "white");
-    			add_location(a, file$1, 8, 4, 124);
+    			add_location(a, file$1, 18, 4, 670);
     			attr_dev(div, "class", "maindiv svelte-1kb1kin");
-    			add_location(div, file$1, 7, 0, 98);
+    			add_location(div, file$1, 17, 0, 644);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -447,7 +447,6 @@ var app = (function () {
     }
 
     function remainingtime(end_date) {
-    	
     }
 
     function instance$1($$self, $$props, $$invalidate) {

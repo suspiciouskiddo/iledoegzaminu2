@@ -1,6 +1,16 @@
 <script>
     export let dataobj;
     function remainingtime(end_date) {
+        let cdate = new Date();
+        let diff = end_date - cdate;
+        let robj = {
+            inmonths: Math.floor((diff / (1000 * 60 * 60 * 24 * 30)) * 1000000)/1000000,
+            inweeks: Math.floor((diff / (1000 * 60 * 60 * 24 * 7)) * 100000)/100000,
+            indays: Math.floor((diff / (1000 * 60 * 60 * 24)) * 10000)/10000,
+            inhours: Math.floor((diff / (1000 * 60 * 60)) * 1000)/1000,
+            inminutes: Math.floor((diff / (1000 * 60)) * 100)/100,
+            inseconds: Math.floor((diff / 1000) * 1)/1
+        }
         
     }
 </script>
