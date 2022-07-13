@@ -378,24 +378,34 @@ var app = (function () {
     	let t1_value = /*dataobj*/ ctx[0].name + "";
     	let t1;
     	let t2;
-    	let p;
+    	let p0;
+    	let t3_value = /*dataobj*/ ctx[0].date.getDate() + "";
+    	let t3;
     	let t4;
-    	let h2;
+    	let t5_value = /*dataobj*/ ctx[0].date.getMonth() + "";
+    	let t5;
     	let t6;
-    	let h30;
-    	let t7_value = remainingtime(/*dataobj*/ ctx[0].date).inmonths + "";
+    	let t7_value = /*dataobj*/ ctx[0].date.getFullYear() + "";
     	let t7;
     	let t8;
-    	let t9;
-    	let h31;
-    	let t10_value = remainingtime(/*dataobj*/ ctx[0].date).inweeks + "";
+    	let p1;
     	let t10;
-    	let t11;
+    	let h2;
     	let t12;
-    	let h32;
-    	let t13_value = remainingtime(/*dataobj*/ ctx[0].date).indays + "";
+    	let h30;
+    	let t13_value = /*datedata*/ ctx[1].inmonths + "";
     	let t13;
     	let t14;
+    	let t15;
+    	let h31;
+    	let t16_value = /*datedata*/ ctx[1].inweeks + "";
+    	let t16;
+    	let t17;
+    	let t18;
+    	let h32;
+    	let t19_value = /*datedata*/ ctx[1].indays + "";
+    	let t19;
+    	let t20;
     	let a_href_value;
 
     	const block = {
@@ -406,36 +416,45 @@ var app = (function () {
     			t0 = text("Odliczanie do ");
     			t1 = text(t1_value);
     			t2 = space();
-    			p = element("p");
-    			p.textContent = "(kliknij w tekst aby zobaczyć więcej)";
-    			t4 = space();
+    			p0 = element("p");
+    			t3 = text(t3_value);
+    			t4 = text(".");
+    			t5 = text(t5_value);
+    			t6 = text(".");
+    			t7 = text(t7_value);
+    			t8 = space();
+    			p1 = element("p");
+    			p1.textContent = "(kliknij w tekst aby zobaczyć więcej)";
+    			t10 = space();
     			h2 = element("h2");
     			h2.textContent = "Pozostało:";
-    			t6 = space();
-    			h30 = element("h3");
-    			t7 = text(t7_value);
-    			t8 = text(" miesięcy, inaczej");
-    			t9 = space();
-    			h31 = element("h3");
-    			t10 = text(t10_value);
-    			t11 = text(" tygodni, inaczej");
     			t12 = space();
-    			h32 = element("h3");
+    			h30 = element("h3");
     			t13 = text(t13_value);
-    			t14 = text(" dni");
-    			add_location(h1, file$1, 19, 8, 759);
-    			set_style(p, "font-size", "12px");
-    			add_location(p, file$1, 20, 8, 805);
-    			add_location(h2, file$1, 21, 8, 883);
-    			add_location(h30, file$1, 22, 8, 912);
-    			add_location(h31, file$1, 23, 8, 986);
-    			add_location(h32, file$1, 24, 8, 1058);
+    			t14 = text(" miesięcy, inaczej");
+    			t15 = space();
+    			h31 = element("h3");
+    			t16 = text(t16_value);
+    			t17 = text(" tygodni, inaczej");
+    			t18 = space();
+    			h32 = element("h3");
+    			t19 = text(t19_value);
+    			t20 = text(" dni");
+    			add_location(h1, file$1, 24, 8, 878);
+    			set_style(p0, "font-size", "14px");
+    			add_location(p0, file$1, 25, 8, 924);
+    			set_style(p1, "font-size", "11px");
+    			add_location(p1, file$1, 26, 8, 1044);
+    			add_location(h2, file$1, 27, 8, 1122);
+    			add_location(h30, file$1, 28, 8, 1151);
+    			add_location(h31, file$1, 29, 8, 1206);
+    			add_location(h32, file$1, 30, 8, 1259);
     			attr_dev(a, "href", a_href_value = /*dataobj*/ ctx[0].addr);
     			set_style(a, "text-decoration", "none");
     			set_style(a, "color", "white");
-    			add_location(a, file$1, 18, 4, 682);
+    			add_location(a, file$1, 23, 4, 801);
     			attr_dev(div, "class", "maindiv svelte-5ctqfi");
-    			add_location(div, file$1, 17, 0, 656);
+    			add_location(div, file$1, 22, 0, 775);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -447,27 +466,37 @@ var app = (function () {
     			append_dev(h1, t0);
     			append_dev(h1, t1);
     			append_dev(a, t2);
-    			append_dev(a, p);
-    			append_dev(a, t4);
+    			append_dev(a, p0);
+    			append_dev(p0, t3);
+    			append_dev(p0, t4);
+    			append_dev(p0, t5);
+    			append_dev(p0, t6);
+    			append_dev(p0, t7);
+    			append_dev(a, t8);
+    			append_dev(a, p1);
+    			append_dev(a, t10);
     			append_dev(a, h2);
-    			append_dev(a, t6);
-    			append_dev(a, h30);
-    			append_dev(h30, t7);
-    			append_dev(h30, t8);
-    			append_dev(a, t9);
-    			append_dev(a, h31);
-    			append_dev(h31, t10);
-    			append_dev(h31, t11);
     			append_dev(a, t12);
+    			append_dev(a, h30);
+    			append_dev(h30, t13);
+    			append_dev(h30, t14);
+    			append_dev(a, t15);
+    			append_dev(a, h31);
+    			append_dev(h31, t16);
+    			append_dev(h31, t17);
+    			append_dev(a, t18);
     			append_dev(a, h32);
-    			append_dev(h32, t13);
-    			append_dev(h32, t14);
+    			append_dev(h32, t19);
+    			append_dev(h32, t20);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*dataobj*/ 1 && t1_value !== (t1_value = /*dataobj*/ ctx[0].name + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*dataobj*/ 1 && t7_value !== (t7_value = remainingtime(/*dataobj*/ ctx[0].date).inmonths + "")) set_data_dev(t7, t7_value);
-    			if (dirty & /*dataobj*/ 1 && t10_value !== (t10_value = remainingtime(/*dataobj*/ ctx[0].date).inweeks + "")) set_data_dev(t10, t10_value);
-    			if (dirty & /*dataobj*/ 1 && t13_value !== (t13_value = remainingtime(/*dataobj*/ ctx[0].date).indays + "")) set_data_dev(t13, t13_value);
+    			if (dirty & /*dataobj*/ 1 && t3_value !== (t3_value = /*dataobj*/ ctx[0].date.getDate() + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*dataobj*/ 1 && t5_value !== (t5_value = /*dataobj*/ ctx[0].date.getMonth() + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*dataobj*/ 1 && t7_value !== (t7_value = /*dataobj*/ ctx[0].date.getFullYear() + "")) set_data_dev(t7, t7_value);
+    			if (dirty & /*datedata*/ 2 && t13_value !== (t13_value = /*datedata*/ ctx[1].inmonths + "")) set_data_dev(t13, t13_value);
+    			if (dirty & /*datedata*/ 2 && t16_value !== (t16_value = /*datedata*/ ctx[1].inweeks + "")) set_data_dev(t16, t16_value);
+    			if (dirty & /*datedata*/ 2 && t19_value !== (t19_value = /*datedata*/ ctx[1].indays + "")) set_data_dev(t19, t19_value);
 
     			if (dirty & /*dataobj*/ 1 && a_href_value !== (a_href_value = /*dataobj*/ ctx[0].addr)) {
     				attr_dev(a, "href", a_href_value);
@@ -511,6 +540,15 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Counter', slots, []);
     	let { dataobj } = $$props;
+    	let datedata = undefined;
+
+    	setInterval(
+    		() => {
+    			$$invalidate(1, datedata = remainingtime(dataobj.date));
+    		},
+    		1000
+    	);
+
     	const writable_props = ['dataobj'];
 
     	Object.keys($$props).forEach(key => {
@@ -521,17 +559,18 @@ var app = (function () {
     		if ('dataobj' in $$props) $$invalidate(0, dataobj = $$props.dataobj);
     	};
 
-    	$$self.$capture_state = () => ({ dataobj, remainingtime });
+    	$$self.$capture_state = () => ({ dataobj, remainingtime, datedata });
 
     	$$self.$inject_state = $$props => {
     		if ('dataobj' in $$props) $$invalidate(0, dataobj = $$props.dataobj);
+    		if ('datedata' in $$props) $$invalidate(1, datedata = $$props.datedata);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [dataobj];
+    	return [dataobj, datedata];
     }
 
     class Counter extends SvelteComponentDev {

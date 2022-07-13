@@ -13,16 +13,22 @@
         }
         return robj;
     }
+    let datedata = undefined;
+    setInterval(() => {
+        datedata = remainingtime((dataobj.date));
+    }, 1000);
+
 </script>
 
 <div class="maindiv">
     <a href={dataobj.addr} style="text-decoration: none; color: white;">
         <h1>Odliczanie do {dataobj.name}</h1>
-        <p style="font-size: 12px;">(kliknij w tekst aby zobaczyć więcej)</p>
+        <p style="font-size: 14px;">{dataobj.date.getDate()}.{dataobj.date.getMonth()}.{dataobj.date.getFullYear()}</p>
+        <p style="font-size: 11px;">(kliknij w tekst aby zobaczyć więcej)</p>
         <h2>Pozostało: </h2>
-        <h3>{remainingtime(dataobj.date).inmonths} miesięcy, inaczej</h3>
-        <h3>{remainingtime(dataobj.date).inweeks} tygodni, inaczej</h3>
-        <h3>{remainingtime(dataobj.date).indays} dni</h3>
+        <h3>{datedata.inmonths} miesięcy, inaczej</h3>
+        <h3>{datedata.inweeks} tygodni, inaczej</h3>
+        <h3>{datedata.indays} dni</h3>
 
     </a>
 </div>
