@@ -77,7 +77,7 @@ setInterval(calcDate, 500);
 				</a></div>
 				<div class="maeformdiv">
 					<h2>Generowanie własnego odliczania</h2>
-					<a href="/customsave" style="color: black;"><p style="font-size: 12px;">Aby zapisać odliczanie kliknij tutaj</p></a>
+					<a href="/customsave" style="color: black;"><p style="font-size: 14px;">Aby zapisać odliczanie kliknij tutaj</p></a>
 					<input type="text" placeholder="Nazwa odliczania (bez znaków specjalnych)" bind:value={formname}>
 					<input type="date" id="inputcustomdate" bind:value={formdate}>
 					<input type="time" id="inputcustomtime" bind:value={formtime}>
