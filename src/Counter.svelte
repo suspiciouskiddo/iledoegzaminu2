@@ -1,40 +1,10 @@
 <script>
     export let dataobj;
-    function remainingtime(end_date) {
-        let cdate = new Date();
-        let diff = end_date - cdate;
-        let robj = {
-            inmonths: Math.floor((diff / (1000 * 60 * 60 * 24 * 30)) * 1000000)/1000000,
-            inweeks: Math.floor((diff / (1000 * 60 * 60 * 24 * 7)) * 100000)/100000,
-            indays: Math.floor((diff / (1000 * 60 * 60 * 24)) * 10000)/10000,
-            inhours: Math.floor((diff / (1000 * 60 * 60)) * 1000)/1000,
-            inminutes: Math.floor((diff / (1000 * 60)) * 100)/100,
-            inseconds: Math.floor((diff / 1000) * 1)/1
-        }
-        return robj;
-    }
-    let datedata = undefined;
-    setInterval(() => {
-        datedata = remainingtime((dataobj.date));
-    }, 1000);
-
 </script>
 
-<div class="maindiv">
-    <a href={dataobj.addr} style="text-decoration: none; color: white;">
-        <h1>Odliczanie do {dataobj.name}</h1>
-        <p style="font-size: 14px;">{dataobj.date.getDate()}.{dataobj.date.getMonth()}.{dataobj.date.getFullYear()}</p>
-        <p style="font-size: 11px;">(kliknij w tekst aby zobaczyć więcej)</p>
-        <h2>Pozostało: </h2>
-        <h3>{datedata.inmonths} miesięcy, inaczej</h3>
-        <h3>{datedata.inweeks} tygodni, inaczej</h3>
-        <h3>{datedata.indays} dni</h3>
-
-    </a>
-</div>
+<div class="maindiv" />
 
 <style>
-    
     .maindiv {
         height: 300px;
         width: 325px;

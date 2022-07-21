@@ -1,14 +1,88 @@
 <script>
-import Counter from "./Counter.svelte";
-let dob = {
-	name: "chuj",
-	addr: "/",
-	date: new Date(2020, 1, 1, 10, 22, 35)
+const e8date = new Date(2023, 6, 1, 8, 0, 0);
+const mdate = new Date(2023, 3, 1 ,1, 12, 0);
+const wakacjedate = new Date(2022, 8, 1,8,0,0);
+let e8days  = undefined;
+let e8hours = undefined;
+let e8minutes = undefined;
+let e8seconds = undefined;
+
+let mdays  = undefined;
+let mhours = undefined;
+let mminutes = undefined;
+let mseconds = undefined;
+
+let wdays  = undefined;
+let whours = undefined;
+let wminutes = undefined;
+let wseconds = undefined;
+
+let formdate = "";
+let formname = "";
+let formtime = "";
+
+function calcDate(){
+	const now = new Date();
+	const diff = e8date - now;
+	const diffmatura = mdate - now;
+	const diffwakacje = wakacjedate - now;
+
+	e8days = Math.floor((diff / (1000 * 60 * 60 * 24))*10000)/10000;
+	e8hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	e8minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+	e8seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+	mdays = Math.floor(diffmatura / (1000 * 60 * 60 * 24));
+	mhours = Math.floor((diffmatura % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	mminutes = Math.floor((diffmatura % (1000 * 60 * 60)) / (1000 * 60));
+	mseconds = Math.floor((diffmatura % (1000 * 60)) / 1000);
+
+	wdays = Math.floor((diffwakacje / (1000 * 60 * 60 * 24))*10000)/10000;
+	whours = Math.floor((diffwakacje / (1000 * 60 * 60))*1000)/1000;
+	wminutes = Math.floor((diffwakacje / (1000 * 60))*100)/100;
+	wseconds = Math.floor((diffwakacje / (1000)));
+
 }
+
+setInterval(calcDate, 500);
 </script>
+
 <main>
 	<div class="counter-holder" id="counter-holder">
-		<Counter dataobj="{dob}"/>
+		<div class="counterdiv"><a href="/e8" style="color: black;"><h2>Odliczanie do egzaminu ósmoklasisty 2023</h2>
+		<p style="font-size: 12px;">Kliknij w tekst aby zobaczyć więcej</p>
+			<!-- 
+		<h3>W dniach {e8days}</h3>
+			<h3>W godzinach {e8hours}</h3>
+			<h3>W minutach {e8minutes}</h3>
+			<h3>W sekundach {e8seconds}</h3>
+		-->
+		<h3>Brak dokładnego terminu</h3>
+		</a></div>
+		<div class="counterdiv"><a href="/matura" style="color: black;"><h2>Odliczanie do matury 2023</h2>
+			<p style="font-size: 12px;">Kliknij w tekst aby zobaczyć więcej</p>
+			<!---	
+			<h3>W dniach {mdays}</h3>
+				<h3>W godzinach {mhours}</h3>
+				<h3>W minutach {mminutes}</h3>
+				<h3>W sekundach {mseconds}</h3>-->
+			<h3>Brak dokładnego terminu</h3>
+			</a></div>
+			<div class="counterdiv"><a href="/wakacje" style="color: black;"><h2>Odliczanie do końca wakacji</h2>
+				<p style="font-size: 12px;">Kliknij w tekst aby zobaczyć więcej</p>
+					<h3>W dniach {wdays}</h3>
+					<h3>W godzinach {whours}</h3>
+					<h3>W minutach {wminutes}</h3>
+					<h3>W sekundach {wseconds}</h3>
+				</a></div>
+				<div class="maeformdiv">
+					<h2>Generowanie własnego odliczania</h2>
+					<a href="/customsave" style="color: black;"><p style="font-size: 12px;">Aby zapisać odliczanie kliknij tutaj</p></a>
+					<input type="text" placeholder="Nazwa odliczania (bez znaków specjalnych)" bind:value={formname}>
+					<input type="date" id="inputcustomdate" bind:value={formdate}>
+					<input type="time" id="inputcustomtime" bind:value={formtime}>
+					<a href="/custom?name={formname}&date={formdate}&time={formtime}" style="font-size: 14px;">https://iledoegzaminu.pl/custom?name={formname}&date={formdate}&time={formtime}</a>
+				</div>
 	</div>
 </main>
 <div class="nav">
@@ -34,7 +108,7 @@ let dob = {
 			<div style="height: 50px;" />
 		</li>
 		<li>
-			<a href="/">
+			<a href="/matura">
 				<div class="nav-item-div">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +125,7 @@ let dob = {
 			>
 		</li>
 		<li>
-			<a href="/">
+			<a href="/e8">
 				<div class="nav-item-div">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +142,7 @@ let dob = {
 			>
 		</li>
 		<li>
-			<a href="/">
+			<a href="/wakacje">
 				<div class="nav-item-div">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +163,29 @@ let dob = {
 
 
 <style>
+	.maeformdiv {
+		height: 300px;
+        width: 325px;
+        background: rgb(56, 56, 56);
+        margin: 10px;
+        text-align: center;
+		color: black;
+	}
 	/* theese properties for all screen sizes*/
+	input {
+		width: 100%;
+		height: 30px;
+		background-color: #2c2d30;
+		border: 0;
+	}
+	.counterdiv {
+		height: 300px;
+        width: 325px;
+        background: rgb(56, 56, 56);
+        margin: 10px;
+        text-align: center;
+		color: black;
+	}
 	:root {
 		overflow-x: hidden;
 	}
